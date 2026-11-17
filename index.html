@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Закупки из Китая — обучение с наставником</title>
+<style>
+:root{--black:#000;--dark:#0c0c0c;--line:#262626;--orange:#ff6a00;--terra:#c4623f;--text:#fff;--muted:#a3a3a3}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--black);color:var(--text);font-family:Montserrat,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55;padding-top:env(safe-area-inset-top,0px)}
+section{padding:64px 20px;max-width:1040px;margin:0 auto}
+h1{font-size:clamp(30px,6vw,56px);font-weight:800;line-height:1.1}
+h2{font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:10px}
+.kicker{color:var(--terra);letter-spacing:.2em;font-size:12px;text-transform:uppercase;margin-bottom:10px}
+.sub{color:var(--orange);font-size:18px;margin-bottom:28px}
+.center{text-align:center}
+.btn{display:inline-block;background:var(--orange);color:#000;text-decoration:none;font-weight:700;padding:16px 34px;border-radius:999px;box-shadow:0 0 30px rgba(196,98,63,.35);border:0;cursor:pointer;font-size:16px}
+.card{background:var(--dark);border:1px solid var(--line);border-radius:20px;padding:24px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+nav{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;gap:18px;overflow-x:auto;padding:14px 20px;font-size:13px;white-space:nowrap}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--terra)}
+.hero{text-align:center;padding-top:80px;background:radial-gradient(ellipse at 50% 0%,rgba(255,106,0,.25),transparent 60%)}
+.hero p.lead{color:var(--muted);max-width:620px;margin:18px auto 30px;font-size:17px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border:1px solid var(--orange);border-radius:20px;margin-top:56px;overflow:hidden}
+.stats>div{padding:28px 20px;border-right:1px solid var(--line);text-align:left}
+.stats>div:last-child{border-right:0}
+.stats b{display:block;font-size:34px;color:var(--orange);font-weight:800}
+.stats span{color:var(--muted);font-size:14px}
+.note{color:var(--terra);text-align:right;margin-top:14px;font-size:14px}
+ul.check{list-style:none;display:grid;gap:14px}
+ul.check li{padding-left:34px;position:relative}
+ul.check li:before{content:"✓";position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--orange);color:#000;font-size:13px;text-align:center;line-height:22px}
+.step{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.step .card small{color:var(--terra);letter-spacing:.15em;font-size:11px;text-transform:uppercase}
+.step h3{margin:6px 0 8px;font-size:18px}
+.who .card .glyph{width:46px;height:46px;border-radius:50%;border:1px solid var(--terra);color:var(--terra);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+.num{color:var(--terra);font-weight:800;font-size:18px;min-width:40px;display:inline-block}
+.list-num{list-style:none;display:grid;gap:0}
+.list-num li{display:flex;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);font-size:17px}
+.tariff h3{font-size:24px;margin-bottom:14px;text-align:center}
+.tariff .card ul{list-style:none;display:grid;gap:10px;margin:14px 0 22px}
+.tariff .card li:before{content:"★ ";color:var(--orange)}
+.tariff .card li.plain:before{content:"• ";color:var(--orange)}
+.review b{display:block;margin-bottom:12px;font-size:17px;color:var(--terra)}
+.review p{color:var(--text);font-size:15px}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font-weight:700;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--terra);font-size:24px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:12px}
+.faq-group{margin-bottom:34px}
+.faq-group h3{color:var(--terra);font-size:14px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px}
+.final{text-align:center;background:linear-gradient(180deg,transparent,rgba(255,106,0,.12))}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 20px 90px}
+.fixed-cta{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20}
+@media (max-width:600px){.stats>div{border-right:0;border-bottom:1px solid var(--line)}section{padding:48px 16px}}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:24px}
+.tcard{display:flex;flex-direction:column}
+.tcard .tag{color:var(--terra);font-size:12px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px}
+.tcard h3{font-size:22px;margin-bottom:10px}
+.tcard .fmt{color:var(--orange);font-weight:700;margin-bottom:10px}
+.tcard .intro{color:var(--muted);margin-bottom:12px;font-size:15px}
+.tcard .sub2{font-weight:700;margin:6px 0 4px}
+.tcard .blk{font-size:15px;color:var(--text);margin:14px 0 6px}
+.tcard ul{list-style:none;display:grid;gap:6px}
+.tcard li.plain{color:var(--muted);font-size:14px;padding-left:14px;position:relative}
+.tcard li.plain:before{content:"•";position:absolute;left:0;color:var(--orange)}
+.tcard .result{margin-top:16px;font-size:15px}
+.tcard .note2{color:var(--terra);font-size:14px;margin-top:10px}
+.tcard .price{color:var(--muted);font-size:14px;margin:12px 0 18px}
+.tcard .btn{margin-top:auto}
+.stats{grid-template-columns:1fr 1fr}
+.stats>div{border-right:0;border-bottom:1px solid var(--line)}
+.stats>div:nth-child(odd){border-right:1px solid var(--line)}
+.stats>div:nth-child(n+3){border-bottom:0}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero">Главная</a>
+  <a href="#essence">Суть</a>
+  <a href="#who">Кому подходит</a>
+  <a href="#program">Программа</a>
+  <a href="#after">Результат</a>
+  <a href="#tariffs">Тарифы</a>
+  <a href="#reviews">Отзывы</a>
+  <a href="#faq">Вопросы</a>
+</nav>
+
+<header id="hero" class="hero">
+  <section style="padding-top:20px">
+    <div class="kicker">Китай · Закупки · Наставничество</div>
+    <h1>Закупки из Китая:<br>от выбора площадки до прибыли</h1>
+    <p class="lead">Обучение с наставником, личное сопровождение на каждом этапе и работа напрямую с фабриками.</p>
+    <a class="btn" href="#tariffs">Оставить заявку →</a>
+
+    <div class="stats">
+      <div><b>5+ млн ₽</b><span>заработано учениками на товарах из Китая</span></div>
+      <div><b>1000+</b><span>учеников прошли обучение</span></div>
+      <div><b>100%</b><span>работа напрямую с фабриками Китая</span></div>
+      <div><b>24/7</b><span>личное сопровождение на каждом этапе</span></div>
+    </div>
+    <p class="note">Проверенная система без блокировок аккаунтов</p>
+  </section>
+</header>
+
+<section id="essence">
+  <div class="kicker">Суть обучения</div>
+  <h2>От выбора площадки до прибыли</h2>
+  <p class="sub">Что вы получите</p>
+  <ul class="check">
+    <li><b>Основы онлайн-заказов.</b> Как правильно оформлять заказы, выбирать надёжные сайты и проверять качество товаров.</li>
+    <li><b>Лучшие платформы.</b> Проверенные площадки для заказа из Китая: 1688, Taobao, Pinduoduo, Poizon, WeChat.</li>
+    <li><b>Расширение ассортимента.</b> Заказывайте товары, которых нет в вашем городе или стране: от трендовых гаджетов до эксклюзивной одежды и аксессуаров.</li>
+    <li><b>Экономия на покупках.</b> Покупайте по ценам на 40–70% ниже, чем в обычных магазинах.</li>
+  </ul>
+</section>
+
+<section id="who">
+  <div class="kicker">Кому подходит</div>
+  <h2>Это обучение для вас, если вы</h2>
+  <div class="grid3" style="margin-top:24px">
+    <div class="card"><div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v4M18 10v4"/></svg></div>Хотите начать зарабатывать на товарах из Китая, но не знаете с чего начать</div>
+    <div class="card"><div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>Боитесь потерять деньги из-за ошибок</div>
+    <div class="card"><div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>Хотите стабильный дополнительный или основной доход</div>
+    <div class="card"><div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></div>Ищете удалённую работу с гибким графиком</div>
+    <div class="card"><div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M16 13h2"/></svg></div>Хотите открыть собственный бизнес без большого стартового капитала</div>
+    <div class="card"><div class="glyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4-2 7 0 8 0 0 1 2 4 0 8l-5 5-4-4z"/><path d="M5 15c-1 2-1 4-1 4s2 0 4-1"/></svg></div>Устали смотреть, как другие зарабатывают, и готовы начать сами</div>
+  </div>
+</section>
+
+<section id="program">
+  <div class="kicker">Программа обучения</div>
+  <h2>Что именно вы изучите на каждом этапе</h2>
+  <div class="step" style="margin-top:24px">
+    <div class="card"><small>Основы онлайн-заказов из Китая</small><h3>Знакомство с китайским рынком: найди свою золотую жилу в Китае!</h3></div>
+    <div class="card"><small>Выбор надёжных поставщиков</small><h3>Поиск проверенных продавцов</h3></div>
+    <div class="card"><small>Общение с продавцами и переговоры по цене</small><h3>Скрипты переговоров: снижаем цену на 20–50%</h3></div>
+    <div class="card"><small>Таможенные процедуры: пошагово без ошибок</small><h3>Пошаговая инструкция по растаможке без ошибок</h3></div>
+    <div class="card"><small>Практические уроки: оптимизация затрат на каждом этапе</small><h3>Как снизить затраты на 20–50% по каждому этапу закупки</h3></div>
+  </div>
+</section>
+
+<section id="after">
+  <div class="kicker">После обучения</div>
+  <h2>Вы сможете</h2>
+  <ul class="list-num" style="margin-top:20px">
+    <li><span class="num">01</span>Самостоятельно находить прибыльные товары</li>
+    <li><span class="num">02</span>Безопасно работать с китайскими площадками</li>
+    <li><span class="num">03</span>Избегать блокировок и ошибок</li>
+    <li><span class="num">04</span>Находить надёжных поставщиков</li>
+    <li><span class="num">05</span>Запускать продажи и получать первый доход</li>
+    <li><span class="num">06</span>Построить стабильный бизнес с Китаем</li>
+  </ul>
+</section>
+
+<section id="tariffs">
+  <div class="kicker center">Тарифы</div>
+  <h2 class="center">Выберите свой формат</h2>
+  <div class="tgrid"><div class="card tcard"><div class="tag">Тариф №1 · Доступный</div><h3>Самостоятельный выкуп из Китая</h3><p class="fmt">Формат обучения: 2 недели</p><p class="sub2">Что входит в тариф:</p><h4 class="blk">1. Работа с китайскими площадками</h4><ul><li class="plain">Регистрация и работа с 1688.</li><li class="plain">Регистрация и работа с Pinduoduo.</li><li class="plain">Поиск товаров и выгодных предложений.</li></ul><h4 class="blk">2. Настройка Alipay</h4><ul><li class="plain">Создание и настройка китайского кошелька.</li><li class="plain">Подготовка к оплате товаров напрямую с китайских площадок.</li></ul><h4 class="blk">3. Обмен рублей на юани</h4><ul><li class="plain">Предоставление проверенного обменника для пополнения китайского кошелька.</li></ul><h4 class="blk">4. Выгодное карго</h4><ul><li class="plain">Предоставление проверенного карго для доставки товаров.</li><li class="plain">Стоимость доставки смешанного груза — 3,2 $/кг (примерно 290–300 ₽/кг).</li></ul><h4 class="blk">5. Практическое обучение</h4><ul><li class="plain">Разбор процесса самостоятельного выкупа.</li><li class="plain">Как оформить первый заказ.</li><li class="plain">Как оплатить и отправить товар из Китая.</li></ul><h4 class="blk">6. Групповая обратная связь</h4><ul><li class="plain">Поддержка в общем учебном чате.</li><li class="plain">Ответы на вопросы по регистрации, оплате и выкупу.</li><li class="plain">Сопровождение от регистрации до первого закупа.</li></ul><p class="result"><b>Результат:</b> за 2 недели вы освоите основные этапы самостоятельного выкупа и сможете оформить свой первый заказ из Китая без посредников.</p><p class="note2">Важно: обратная связь предоставляется только в групповом формате. Индивидуальных консультаций в личных сообщениях нет.</p><p class="price">Стоимость уточняется индивидуально</p><a class="btn choose" data-label="Доступный (групповой)" href="#contact" style="display:block;text-align:center">Выбрать тариф</a></div><div class="card tcard"><div class="tag">Тариф №2 · Базовый (групповой)</div><h3>Самостоятельный выкуп</h3><p class="fmt">Формат обучения: 1 месяц</p><p class="sub2">Что входит в тариф:</p><h4 class="blk">1. Работа с 5 китайскими площадками</h4><ul><li class="plain">1688</li><li class="plain">Taobao</li><li class="plain">Pinduoduo</li><li class="plain">Poizon</li><li class="plain">WeChat</li></ul><h4 class="blk">2. Настройка Alipay</h4><ul><li class="plain">Регистрация и настройка китайского кошелька.</li><li class="plain">Подготовка к самостоятельной оплате товаров.</li></ul><h4 class="blk">3. Практическое обучение</h4><ul><li class="plain">Сопровождение от регистрации до первого закупа.</li><li class="plain">Поиск товаров и поставщиков.</li><li class="plain">Оформление и оплата заказов.</li></ul><h4 class="blk">4. Проверенный обменник</h4><ul><li class="plain">Предоставляю контакт человека, который обменяет ваши рубли на китайские юани.</li></ul><h4 class="blk">5. Выгодное карго</h4><ul><li class="plain">Стоимость доставки смешанного груза — 3,2 $/кг (290–300 ₽/кг).</li><li class="plain">Фото- и видеоотчёты по товарам.</li><li class="plain">Отправка без лишнего мусора и ненужной упаковки.</li></ul><h4 class="blk">6. База поставщиков WeChat</h4><ul><li class="plain">Проверенные контакты поставщиков.</li><li class="plain">Поставщики техники (Dyson, Roborock и другие бренды).</li><li class="plain">Дополнительные контакты для поиска выгодных товаров.</li></ul><h4 class="blk">7. Групповая обратная связь</h4><ul><li class="plain">Общий учебный чат.</li><li class="plain">Ответы на вопросы в процессе обучения.</li><li class="plain">Помощь на этапах регистрации, оплаты и первого заказа.</li></ul><p class="result"><b>Результат:</b> вы научитесь самостоятельно работать с пятью китайскими площадками, находить поставщиков, оплачивать товары и организовывать доставку из Китая.</p><p class="note2">Важно: обучение и обратная связь проходят в групповом формате. Индивидуального сопровождения в личных сообщениях нет.</p><p class="price">Стоимость уточняется индивидуально</p><a class="btn choose" data-label="Базовый (групповой)" href="#contact" style="display:block;text-align:center">Выбрать тариф</a></div><div class="card tcard"><div class="tag">Тариф №3 · VIP</div><h3>Индивидуальный</h3><p class="fmt">Формат обучения: индивидуально</p><p class="intro">Максимальное сопровождение. Индивидуальное обучение с личным сопровождением от Асии. Вы работаете один на один со мной, без групповых занятий, и подстраиваетесь под удобный для вас график.</p><p class="sub2">Что входит в тариф:</p><h4 class="blk">1. Индивидуальное обучение</h4><ul><li class="plain">Отдельная группа только для вас.</li><li class="plain">Личное сопровождение Асии и помощницы.</li><li class="plain">Индивидуальный график занятий.</li><li class="plain">Видеосозвоны с демонстрацией экрана.</li><li class="plain">Пошаговое обучение от регистрации до самостоятельного выкупа товаров.</li></ul><h4 class="blk">2. Работа с 5 китайскими площадками</h4><ul><li class="plain">1688</li><li class="plain">Taobao</li><li class="plain">Pinduoduo</li><li class="plain">Poizon</li><li class="plain">WeChat</li></ul><h4 class="blk">3. Настройка китайских платежей</h4><ul><li class="plain">Регистрация и настройка Alipay.</li><li class="plain">Обучение работе с китайским кошельком.</li><li class="plain">Обучение обмену рублей на юани напрямую через биржу.</li><li class="plain">Контакты проверенного обменника.</li></ul><h4 class="blk">4. Выгодная доставка из Китая</h4><ul><li class="plain">Контакты карго, с которыми я лично сотрудничаю.</li><li class="plain">Специальный тариф на смешанный груз — от 3,2 $/кг.</li></ul><h4 class="blk">5. База поставщиков WeChat</h4><ul><li class="plain">Китайская аптека.</li><li class="plain">Техника и электроника.</li><li class="plain">Верхняя одежда Max Mara.</li><li class="plain">Дополнительно: 3 контакта поставщиков в подарок, чтобы расширить возможности для закупок и выбора товаров.</li></ul><p class="result"><b>Результат:</b> вы не просто получаете доступ к урокам, а проходите обучение лично со мной. Разбираем каждый этап на практике, работаем с площадками, настраиваем платежи и готовимся к вашим первым самостоятельным закупкам.</p><p class="note2">Моя задача довести вас до уверенной работы с китайскими площадками и самостоятельного выкупа товаров.</p><p class="price">Стоимость уточняется индивидуально</p><a class="btn choose" data-label="VIP (индивидуальный)" href="#contact" style="display:block;text-align:center">Выбрать тариф</a></div></div>
+</section>
+
+<section id="reviews">
+  <div class="kicker center">Реальные результаты</div>
+  <h2 class="center">Что говорят ученики</h2>
+  <p class="sub center">Вдохновляющие кейсы от моих учеников</p>
+  <div class="grid2">
+    <div class="card review"><b>Калимат</b><p>На первое мое обучение я пришла к тебе чисто случайно 🌹 и ни грамм об этом не пожалела. Когда ты предложила пойти на продвижение, я думала, у меня точно не получится, но очень хотелось попробовать. В начале я даже кнопку боялась нажать без одобрения ❤️ сейчас поняла: с таким наставником можно свернуть горы🌸</p></div>
+    <div class="card review"><b>Зара</b><p>Пожалела, что раньше не начала😂 Страх это нормально, и думаю, у каждого есть, но когда есть классный наставник, этот страх проходит, ты чувствуешь ту самую поддержку ❤️ начинаешь верить в себя❤️ Не устану тебя благодарить за веру в меня и благодарить Всевышнего, что встретила тебя❤️👥 Я заработала с тобой 100870р за 2 дня 🔥 чего бы я не сделала за месяц, а то и 2…</p></div>
+    <div class="card review"><b>Альфия</b><p>Было столько тревоги и страха: что подумают люди, воспримут ли мои статусы и рекламу всерьёз, моё ли это вообще: обучение, торговля, биржа… Но с твоей поддержкой и обратной связью я понимаю, что всё было не зря! Каждый курс, который я у тебя купила, приносит мне не только прибыль, но и знания: я уже вернула вложенные деньги и не собираюсь останавливаться. Ася, ты не просто наставница, ты — частичка меня!🥹</p></div>
+    <div class="card review"><b>Зарема</b><p>Спасибо Ася за обучение, мне очень понравилось, до конца была как и обещала с обратной связью с нами. Я очень боялась решиться, но я все таки решилась и не пожалела, сделала свой первый закуп, продала свой товар и сейчас планирую сделать второй закуп.</p></div>
+    <div class="card review"><b>Лиана</b><p>Ася, спасибо, что обучила. Благодаря тебе я сейчас сама продаю обучение и зарабатываю на этом ❤️ объясняешь все четко, все доводишь до конца.</p></div>
+    <div class="card review"><b>Ася</b><p>Асия, ты не поверишь, клянусь Аллахом, как я попала на твою обучение: у меня куча контактов, и ко всему написала я по поводу обучения. У некоторых были очень дорогие закупы с Китая, у некоторых очень дёшево, не знаю почему именно тебя я выбрала, и решила написать тебе. Сейчас клянусь, ты не представляешь, как я рада, что именно к тебе попала ❤️❤️❤️ я не пожалела ни на минуту, что приобрела этот курс. Спасибо тебе за мои новые знания, которые мне пригодятся, ведь в декрете. Этот опыт важен😭❤️🤲 Твоих сил стараний, это видно: на каждом уроке хочется благодарить тебя за этот опыт, которым ты готова делится с нами, всё очень доступно и понятно, спс, за обратную связь, поддержку и наставничество❤️❤️❤️</p></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="kicker center">Вопрос — ответ</div>
+  <h2 class="center">Разберёмся вместе</h2>
+  <p class="sub center">Ответы на самые частые вопросы</p>
+
+  <div class="faq-group">
+    <h3>Старт и опыт</h3>
+    <details><summary>Нужно ли знать китайский язык?</summary><p>Нет, на обучении мы разбираем инструменты и переговоры пошагово, а для общения с продавцами есть готовые скрипты.</p></details>
+    <details><summary>У меня нет опыта, получится ли у меня?</summary><p>Курс построен пошагово: от знакомства с рынком до первой закупки. Наставник сопровождает вас на каждом этапе.</p></details>
+    <details><summary>Я не знаю китайский язык.</summary><p>Можно общаться с продавцами через переводчик и готовые скрипты, которые входят в программу.</p></details>
+    <details><summary>Я не умею вести переговоры с поставщиками.</summary><p>В программе есть отдельный модуль со скриптами переговоров, которые помогают снизить цену на 20–50%.</p></details>
+    <details><summary>Можно ли начать из любого города?</summary><p>Да, работа ведётся онлайн: заказы, поиск поставщиков и переписка происходят через интернет.</p></details>
+    <details><summary>Обязательно ли ездить в Китай?</summary><p>Нет, все основные этапы можно пройти онлайн. Поездка в Китай не обязательна.</p></details>
+    <details><summary>Как начать бизнес с необычным товаром, если нет денег на закупку больших партий?</summary><p>Начинать можно с небольших партий и проверять спрос. На обучении разберём, как считать себестоимость до закупки.</p></details>
+    <details><summary>У меня маленькие дети, не хватит времени.</summary><p>Уроки записаны, поэтому заниматься можно в удобное время. Для старта достаточно нескольких часов в неделю.</p></details>
+    <details><summary>Я работаю, когда мне этим заниматься?</summary><p>Обучение и работа с товарами идут в вашем темпе, в том числе по вечерам и выходным.</p></details>
+    <details><summary>Можно ли совмещать с основной работой?</summary><p>Да, курс рассчитан на совмещение с основной работой: вы двигаетесь в своём темпе.</p></details>
+    <details><summary>Можно ли совмещать обучение с работой?</summary><p>Да, уроки можно проходить в удобное время, а сопровождение идёт через переписку с наставником.</p></details>
+  </div>
+
+  <div class="faq-group">
+    <h3>Деньги и выгода</h3>
+    <details><summary>У меня нет большой суммы для старта.</summary><p>Курс рассчитан на старт с небольших партий, а расчёт себестоимости до закупки помогает не вкладывать лишнего.</p></details>
+    <details><summary>Боюсь, что не окуплю обучение.</summary><p>Ученики окупают обучение с первых продаж. На курсе мы считаем прибыль до закупки, чтобы результат был понятен заранее.</p></details>
+    <details><summary>Зачем покупать обучение, если есть бесплатно?</summary><p>В бесплатных материалах нет пошаговой системы, проверенных поставщиков и личного сопровождения наставника.</p></details>
+    <details><summary>Есть ли рассрочка на обучение?</summary><p>Вопрос рассрочки уточняйте у наставника, условия зависят от тарифа.</p></details>
+    <details><summary>Сколько реально можно заработать?</summary><p>Результат зависит от вложений, товара и ваших действий. Реальные кейсы учеников есть в разделе «Реальные результаты», но гарантий нет.</p></details>
+    <details><summary>Доставка из Китая стоит в два раза дороже самого товара. В чем экономия?</summary><p>Экономия достигается за счёт закупки напрямую с фабрик и переговоров о скидках. Расчёт себестоимости покажет итоговую цену с доставкой.</p></details>
+    <details><summary>Боюсь, что меня обманут поставщики.</summary><p>Мы учим проверять поставщиков, а в индивидуальном тарифе есть доступ к базе проверенных поставщиков.</p></details>
+    <details><summary>Как проверить поставщика, чтобы не попасть на мошенников?</summary><p>Проверка включает историю магазина, отзывы, переписку и оплату через защищённые сервисы. Подробный чек-лист есть в программе.</p></details>
+  </div>
+
+  <div class="faq-group">
+    <h3>Доставка, закупка и товар</h3>
+    <details><summary>С Китая очень долгая доставка.</summary><p>Сроки зависят от способа доставки. В программе разбираем варианты и выбираем подходящий под ваш товар.</p></details>
+    <details><summary>Я ничего не понимаю в доставке и таможне.</summary><p>В программе есть пошаговая инструкция по растаможке без ошибок, а наставник сопровождает вас до первого закупа.</p></details>
+    <details><summary>В Китае некачественный товар.</summary><p>Качество проверяется на этапе выбора поставщика. Курс учит запрашивать образцы и уточнять условия возврата.</p></details>
+    <details><summary>Что делать, если товар придёт с браком?</summary><p>Фиксируем брак фото- и видеоотчётом и обращаемся к поставщику по условиям сделки. Наставник помогает с переговорами.</p></details>
+    <details><summary>А если мой товар потеряют?</summary><p>Риски снижает выбор проверенной карго-компании. Условия при потере обсуждаются с карго-компанией и поставщиком.</p></details>
+    <details><summary>В чем разница покупать через посредника и выкупать самой?</summary><p>Через посредника проще, но дороже. Выкуп самой даёт прямые цены и больше прибыли, но требует знаний, которые даёт курс.</p></details>
+    <details><summary>Смогу ли я покупать напрямую без посредников?</summary><p>Да, в программе показываем, как выйти на фабрики напрямую.</p></details>
+    <details><summary>Боюсь ошибиться с первым заказом.</summary><p>Первый заказ делаем вместе с наставником: сначала расчёт, затем проверка поставщика и только потом оплата.</p></details>
+  </div>
+
+  <div class="faq-group">
+    <h3>Продажи и бизнес</h3>
+    <details><summary>Мне кажется, в этом бизнесе всё занято и нет смысла пробовать.</summary><p>Конкуренция есть везде, но товары, которых нет в вашем городе, дают шанс занять свою нишу.</p></details>
+    <details><summary>Мне кажется, что этот бизнес уже переполнен.</summary><p>Рынок большой, и выигрывает тот, кто находит свои товары и нишу. Курс помогает именно в этом.</p></details>
+    <details><summary>Вдруг у меня не получится продавать товар?</summary><p>Продажи — это навык, которому учат на курсе. Наставник помогает с поиском каналов и оформлением карточек товара.</p></details>
+    <details><summary>Что, если товар не купят?</summary><p>Расчёт себестоимости до закупки и тест спроса на небольших партиях снижают риск остатков.</p></details>
+    <details><summary>Нужно ли оформлять ИП или ООО сразу?</summary><p>Не обязательно сразу. Какую форму выбрать, зависит от ваших целей, поэтому по этому вопросу лучше проконсультироваться с юристом или налоговым консультантом.</p></details>
+    <details><summary>После обучения меня не бросят одну? Будет ли поддержка?</summary><p>Наставник остаётся на связи и сопровождает вас на каждом этапе. Детали поддержки после курса уточняйте при заявке.</p></details>
+  </div>
+</section>
+
+<section id="contact" class="final">
+  <h2>Начните свой путь с Китаем уже сегодня</h2>
+  <p class="sub">Оставьте заявку, и мы подберём формат обучения под вас</p>
+  <div style="margin:36px 0 8px"><h2 style="text-transform:uppercase">Ваш наставник</h2>
+  <p class="sub" style="font-size:24px;color:#fff;font-weight:700;margin-top:18px">Асия Ахмедова</p></div>
+  <a class="btn gold" href="#contact">Оставить заявку →</a>
+</section>
+
+<footer>© Закупки из Китая · Обучение и наставничество</footer>
+
+<a class="btn fixed-cta" href="#tariffs">Оставить заявку</a>
+
+<script>
+// Номер WhatsApp в международном формате без плюса
+const WHATSAPP_NUMBER = "79898955510";
+document.querySelectorAll('.choose').forEach(function(btn){
+  const text = "Здравствуйте! 🧡 Я ознакомилась с форматами обучения и хочу записаться на обучение.\n\n" +
+    "Меня заинтересовал тариф:\n" + btn.dataset.label + "\n\n" +
+    "Хотела бы узнать подробнее об условиях оплаты и записи на выбранный тариф.\n\nЖду обратной связи! 🧡";
+  btn.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+  btn.target = "_blank";
+  btn.rel = "noopener";
+});
+</script>
+</body>
+</html>
